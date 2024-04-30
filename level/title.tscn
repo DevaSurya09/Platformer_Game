@@ -1,0 +1,191 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://component/castle.tres" type="TileSet" id=1]
+[ext_resource path="res://component/bg.tres" type="TileSet" id=2]
+[ext_resource path="res://logo_v21.png" type="Texture" id=3]
+[ext_resource path="res://component/button/pressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://component/button/normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://component/button/hover.tres" type="StyleBox" id=6]
+[ext_resource path="res://character/enemy_npc.tscn" type="PackedScene" id=7]
+[ext_resource path="res://item/box.tscn" type="PackedScene" id=8]
+[ext_resource path="res://character/player_npc.tscn" type="PackedScene" id=9]
+[ext_resource path="res://pixel_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://level/title_button.gd" type="Script" id=11]
+[ext_resource path="res://a_king/Sprites/14-TileSets/Decorations (32x32).png" type="Texture" id=12]
+[ext_resource path="res://sound/nomal_btn.wav" type="AudioStream" id=13]
+[ext_resource path="res://sound/title.wav" type="AudioStream" id=14]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade in"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.129412, 0.129412, 0.129412, 1 ), Color( 0.129412, 0.129412, 0.129412, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade out"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:anchor_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.129412, 0.129412, 0.129412, 0 ), Color( 0.129412, 0.129412, 0.129412, 1 ) ]
+}
+
+[node name="title" type="Node2D"]
+modulate = Color( 0.901961, 0.901961, 0.901961, 1 )
+
+[node name="TileMap2" type="TileMap" parent="."]
+modulate = Color( 0.768627, 0.768627, 0.768627, 1 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1, 8, 0, -65536, 8, 0, -65535, 8, 0, -65534, 8, 0, -65533, 8, 0, -65532, 8, 0, -65531, 8, 0, -65530, 8, 0, -65529, 8, 0, -65528, 8, 0, -65527, 8, 0, -65526, 8, 0, -65525, 8, 0, -65524, 8, 0, -65523, 8, 0, -65522, 8, 0, -65521, 8, 0, -65520, 8, 0, 65535, 8, 0, 0, 8, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 9, 8, 0, 10, 8, 0, 11, 8, 0, 12, 8, 0, 13, 8, 0, 14, 8, 0, 15, 8, 0, 16, 8, 0, 131071, 8, 0, 65536, 8, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540, 8, 0, 65541, 8, 0, 65542, 8, 0, 65543, 8, 0, 65544, 8, 0, 65545, 8, 0, 65546, 8, 0, 65547, 8, 0, 65548, 8, 0, 65549, 8, 0, 65550, 8, 0, 65551, 8, 0, 65552, 8, 0, 196607, 8, 0, 131072, 8, 0, 131073, 8, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 8, 0, 131086, 8, 0, 131087, 8, 0, 131088, 8, 0, 262143, 8, 0, 196608, 8, 0, 196609, 8, 0, 196610, 8, 0, 196611, 8, 0, 196612, 8, 0, 196613, 8, 0, 196614, 8, 0, 196615, 8, 0, 196616, 8, 0, 196617, 8, 0, 196618, 8, 0, 196619, 8, 0, 196620, 8, 0, 196621, 8, 0, 196622, 8, 0, 196623, 8, 0, 196624, 8, 0, 327679, 8, 0, 262144, 8, 0, 262145, 8, 0, 262146, 8, 0, 262147, 8, 0, 262148, 8, 0, 262149, 8, 0, 262150, 8, 0, 262151, 8, 0, 262152, 8, 0, 262153, 8, 0, 262154, 8, 0, 262155, 8, 0, 262156, 8, 0, 262157, 8, 0, 262158, 8, 0, 262159, 8, 0, 262160, 8, 0, 393215, 8, 0, 327680, 8, 0, 327681, 8, 0, 327682, 8, 0, 327683, 8, 0, 327684, 8, 0, 327685, 8, 0, 327686, 8, 0, 327687, 8, 0, 327688, 8, 0, 327689, 8, 0, 327690, 8, 0, 327691, 8, 0, 327692, 8, 0, 327693, 8, 0, 327694, 8, 0, 327695, 8, 0, 327696, 8, 0, 458751, 8, 0, 393216, 8, 0, 393217, 8, 0, 393218, 8, 0, 393219, 8, 0, 393220, 8, 0, 393221, 8, 0, 393222, 8, 0, 393223, 8, 0, 393224, 8, 0, 393225, 8, 0, 393226, 8, 0, 393227, 8, 0, 393228, 8, 0, 393229, 8, 0, 393230, 8, 0, 393231, 8, 0, 393232, 8, 0, 524287, 8, 0, 458752, 8, 0, 458753, 8, 0, 458754, 8, 0, 458755, 8, 0, 458756, 8, 0, 458757, 8, 0, 458758, 8, 0, 458759, 8, 0, 458760, 8, 0, 458761, 8, 0, 458762, 8, 0, 458763, 8, 0, 458764, 8, 0, 458765, 8, 0, 458766, 8, 0, 458767, 8, 0, 458768, 8, 0, 589823, 8, 0, 524288, 8, 0, 524289, 8, 0, 524290, 8, 0, 524291, 8, 0, 524292, 8, 0, 524293, 8, 0, 524294, 8, 0, 524295, 8, 0, 524296, 8, 0, 524297, 8, 0, 524298, 8, 0, 524299, 8, 0, 524300, 8, 0, 524301, 8, 0, 524302, 8, 0, 524303, 8, 0, 524304, 8, 0, 655359, 8, 0, 589824, 8, 0, 589825, 8, 0, 589826, 8, 0, 589827, 8, 0, 589828, 8, 0, 589829, 8, 0, 589830, 8, 0, 589831, 8, 0, 589832, 8, 0, 589833, 8, 0, 589834, 8, 0, 589835, 8, 0, 589836, 8, 0, 589837, 8, 0, 589838, 8, 0, 589839, 8, 0, 589840, 8, 0 )
+
+[node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 0.917647, 0.917647, 0.917647, 1 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -1, 49, 0, -65536, 49, 0, -65535, 49, 0, -65534, 49, 0, -65533, 49, 0, -65532, 49, 0, -65531, 49, 0, -65530, 49, 0, -65529, 49, 0, -65528, 49, 0, -65527, 49, 0, -65526, 49, 0, -65525, 49, 0, -65524, 49, 0, -65523, 49, 0, -65522, 49, 0, -65521, 49, 0, -65520, 49, 0, 65535, 49, 0, 0, 49, 0, 1, 11, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 6, 7, 0, 7, 7, 0, 8, 7, 0, 9, 7, 0, 10, 7, 0, 11, 7, 0, 12, 7, 0, 13, 7, 0, 14, 12, 0, 15, 49, 0, 16, 49, 0, 131071, 49, 0, 65536, 49, 0, 65537, 5, 0, 65550, 4, 0, 65551, 49, 0, 65552, 49, 0, 196607, 49, 0, 131072, 49, 0, 131073, 5, 0, 131086, 4, 0, 131087, 49, 0, 131088, 49, 0, 262143, 49, 0, 196608, 49, 0, 196609, 5, 0, 196622, 4, 0, 196623, 49, 0, 196624, 49, 0, 327679, 49, 0, 262144, 49, 0, 262145, 13, 0, 262146, 6, 0, 262147, 6, 0, 262148, 6, 0, 262149, 6, 0, 262150, 6, 0, 262151, 6, 0, 262152, 6, 0, 262153, 6, 0, 262154, 6, 0, 262155, 6, 0, 262156, 6, 0, 262157, 6, 0, 262158, 14, 0, 262159, 49, 0, 262160, 49, 0, 393215, 49, 0, 327680, 49, 0, 327681, 49, 0, 327682, 49, 0, 327683, 49, 0, 327684, 49, 0, 327685, 49, 0, 327686, 49, 0, 327687, 49, 0, 327688, 49, 0, 327689, 49, 0, 327690, 49, 0, 327691, 49, 0, 327692, 49, 0, 327693, 49, 0, 327694, 49, 0, 327695, 49, 0, 327696, 49, 0, 458751, 49, 0, 393216, 49, 0, 393217, 49, 0, 393218, 49, 0, 393219, 49, 0, 393220, 49, 0, 393221, 49, 0, 393222, 49, 0, 393223, 49, 0, 393224, 49, 0, 393225, 49, 0, 393226, 49, 0, 393227, 49, 0, 393228, 49, 0, 393229, 49, 0, 393230, 49, 0, 393231, 49, 0, 393232, 49, 0, 524287, 49, 0, 458752, 49, 0, 458753, 49, 0, 458754, 49, 0, 458755, 49, 0, 458756, 49, 0, 458757, 49, 0, 458758, 49, 0, 458759, 49, 0, 458760, 49, 0, 458761, 49, 0, 458762, 49, 0, 458763, 49, 0, 458764, 49, 0, 458765, 49, 0, 458766, 49, 0, 458767, 49, 0, 458768, 49, 0, 589823, 49, 0, 524288, 49, 0, 524289, 49, 0, 524290, 49, 0, 524291, 49, 0, 524292, 49, 0, 524293, 49, 0, 524294, 49, 0, 524295, 49, 0, 524296, 49, 0, 524297, 49, 0, 524298, 49, 0, 524299, 49, 0, 524300, 49, 0, 524301, 49, 0, 524302, 49, 0, 524303, 49, 0, 524304, 49, 0, 655359, 49, 0, 589824, 49, 0, 589825, 49, 0, 589826, 49, 0, 589827, 49, 0, 589828, 49, 0, 589829, 49, 0, 589830, 49, 0, 589831, 49, 0, 589832, 49, 0, 589833, 49, 0, 589834, 49, 0, 589835, 49, 0, 589836, 49, 0, 589837, 49, 0, 589838, 49, 0, 589839, 49, 0, 589840, 49, 0 )
+
+[node name="LogoV21" type="Sprite" parent="."]
+modulate = Color( 1, 0.929412, 0.0392157, 1 )
+self_modulate = Color( 1, 1, 1, 0.780392 )
+position = Vector2( 254, 78 )
+scale = Vector2( 0.1521, 0.123047 )
+texture = ExtResource( 3 )
+
+[node name="Node2D" parent="." instance=ExtResource( 9 )]
+position = Vector2( 358, 81 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 101, 83 )
+
+[node name="box" parent="." instance=ExtResource( 8 )]
+position = Vector2( 335, 96 )
+
+[node name="box2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 370, 96 )
+
+[node name="box3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 405, 96 )
+
+[node name="box4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 389, 65 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 158, 114 )
+
+[node name="box5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 74, 96 )
+
+[node name="Decorations(32X32)" type="Sprite" parent="."]
+modulate = Color( 0.878431, 0.878431, 0.878431, 1 )
+position = Vector2( 174, 66 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 131, 95, 72, 74 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 11 )
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = 8.5
+margin_right = 67.0
+margin_bottom = 43.5
+custom_fonts/font = ExtResource( 10 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+text = "NEW GAME"
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+margin_left = 204.0
+margin_top = 193.0
+margin_right = 309.0
+margin_bottom = 230.0
+custom_fonts/font = ExtResource( 10 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+text = " LEVEL"
+
+[node name="Button3" type="Button" parent="CanvasLayer"]
+margin_left = 205.0
+margin_top = 229.0
+margin_right = 310.0
+margin_bottom = 266.0
+custom_fonts/font = ExtResource( 10 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+text = "EXIT"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_left = -30.0
+margin_top = -38.0
+margin_right = 546.0
+margin_bottom = 330.0
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+"anims/fade in" = SubResource( 1 )
+"anims/fade out" = SubResource( 2 )
+
+[node name="btn" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource( 13 )
+volume_db = 8.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -3.0
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer" method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="CanvasLayer" method="_on_Button3_pressed"]

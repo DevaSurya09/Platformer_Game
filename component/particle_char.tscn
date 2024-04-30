@@ -1,0 +1,45 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Run 04.png" type="Texture" id=1]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Run 05.png" type="Texture" id=2]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Jump 04.png" type="Texture" id=3]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Jump 06.png" type="Texture" id=4]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Fall 01.png" type="Texture" id=5]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Run 01.png" type="Texture" id=6]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Fall 02.png" type="Texture" id=7]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Jump 01.png" type="Texture" id=8]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Jump 02.png" type="Texture" id=9]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Jump 05.png" type="Texture" id=10]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Fall 03.png" type="Texture" id=11]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Fall 04.png" type="Texture" id=12]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Fall 05.png" type="Texture" id=13]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Jump 03.png" type="Texture" id=14]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Run 02.png" type="Texture" id=15]
+[ext_resource path="res://a_pirate/Captain Clown Nose/Sprites/Dust Particles/Run 03.png" type="Texture" id=16]
+[ext_resource path="res://component/particle_char.gd" type="Script" id=17]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": false,
+"name": "fall",
+"speed": 18.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 10 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "jump",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "run",
+"speed": 10.0
+} ]
+
+[node name="AnimatedSprite" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "fall"
+offset = Vector2( 0, 4 )
+script = ExtResource( 17 )
+
+[connection signal="animation_finished" from="." to="." method="_on_AnimatedSprite_animation_finished"]

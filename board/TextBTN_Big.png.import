@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/TextBTN_Big.png-6ae2d19e4e8c479b16ea93ff3a8eafe4.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://board/TextBTN_Big.png"
+dest_files=[ "res://.import/TextBTN_Big.png-6ae2d19e4e8c479b16ea93ff3a8eafe4.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

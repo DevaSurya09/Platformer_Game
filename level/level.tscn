@@ -1,0 +1,156 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://component/button/pressed.tres" type="StyleBox" id=1]
+[ext_resource path="res://component/button/hover.tres" type="StyleBox" id=2]
+[ext_resource path="res://component/button/normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://pixel_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://board/UI board Medium  parchment.png" type="Texture" id=5]
+[ext_resource path="res://level/level.gd" type="Script" id=6]
+[ext_resource path="res://component/button/disable.tres" type="StyleBox" id=7]
+[ext_resource path="res://sound/nomal_btn.wav" type="AudioStream" id=8]
+[ext_resource path="res://sound/title.wav" type="AudioStream" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade in"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect2:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.121569, 0.0823529, 0.054902, 1 ), Color( 0.121569, 0.0823529, 0.054902, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect2:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.5, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.0 ]
+}
+
+[node name="level" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -35.0
+margin_top = -17.0
+margin_right = 545.0
+margin_bottom = 331.0
+color = Color( 0.121569, 0.0823529, 0.054902, 1 )
+
+[node name="UiBoardMediumParchment" type="TextureRect" parent="."]
+margin_left = 1.0
+margin_right = 307.0
+margin_bottom = 180.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 98.0
+margin_top = 57.0
+margin_right = 232.0
+margin_bottom = 164.0
+custom_constants/vseparation = 10
+columns = 2
+
+[node name="Button" type="Button" parent="GridContainer"]
+margin_right = 46.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 3 )
+disabled = true
+text = "1"
+
+[node name="Button2" type="Button" parent="GridContainer"]
+margin_left = 50.0
+margin_right = 97.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 3 )
+disabled = true
+text = "2"
+
+[node name="Button3" type="Button" parent="GridContainer"]
+margin_top = 36.0
+margin_right = 46.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 3 )
+disabled = true
+text = "3"
+
+[node name="Button4" type="Button" parent="GridContainer"]
+margin_left = 50.0
+margin_top = 36.0
+margin_right = 97.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 3 )
+disabled = true
+text = "4"
+
+[node name="Button6" type="Button" parent="."]
+margin_left = 14.0
+margin_top = 21.0
+margin_right = 68.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/normal = ExtResource( 3 )
+text = "<="
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -44.0
+margin_top = -17.0
+margin_right = 536.0
+margin_bottom = 331.0
+color = Color( 0.121569, 0.0823529, 0.054902, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/fade in" = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.6, 0.6 )
+limit_left = 0
+limit_top = 0
+
+[node name="btn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = 8.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -3.0
+autoplay = true
+
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GridContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="GridContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="GridContainer/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Button6" to="." method="_on_Button6_pressed"]
